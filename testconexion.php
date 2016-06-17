@@ -1,4 +1,7 @@
 			<?php
+			header("Access-Control-Allow-Origin: *");
+date_default_timezone_set("America/Argentina/Buenos_Aires");
+$ItsGetDate = date("Y/m/d H:i:s");
 			error_reporting(E_ERROR);
 			$myport = $_GET["puerto"];
 			
