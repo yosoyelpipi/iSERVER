@@ -52,7 +52,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 
 
 function testNow(){
-    //myApp.alert('El servidor iSERVER está caído.')
+    myApp.alert('El servidor iSERVER está caído.');
     //$("#estado").show();
     var port = $("#puerto").val();
     $("#log").html('<div align="center" class="col-25">Conectando...<br><span style="width:42px; height:42px" class="preloader"></span></div>');		
