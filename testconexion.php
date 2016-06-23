@@ -1,5 +1,5 @@
-			<?php
-			header("Access-Control-Allow-Origin: *");
+<?php
+header("Access-Control-Allow-Origin: *");
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 $ItsGetDate = date("Y/m/d H:i:s");
 			error_reporting(E_ERROR);
@@ -26,4 +26,4 @@ echo json_encode($arr);
 								echo json_encode(array("Resultado"=>0,"Mensaje"=>"El servido se encuentra on line","Server"=>$Maquines,"Puerto"=>$myport, "Msg"=>$errstr, "MsgNo"=> $errno ));						
 							}	
 
-			?>
+?>
