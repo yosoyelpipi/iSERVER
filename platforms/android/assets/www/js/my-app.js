@@ -15,7 +15,7 @@ var mainView = myApp.addView('.view-main', {
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
 
-    myApp.alert("Device is ready!");
+    //myApp.alert("Device is ready!", 'Tester');
     var element = document.getElementById('deviceProperties');
     element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
     'Device Cordova: '  + device.cordova  + '<br />' +
@@ -31,19 +31,18 @@ $$(document).on('deviceready', function() {
 //myApp.onPageInit('.statusbar-overlay', function (page) {
     // Do something here for "about" page
     $$('#testNow').on('click', function () {
-        var port = $("#puerto").val();
-        myApp.alert(port);
+        var port = $$("#puerto").val();
+        //myApp.alert(port,'Tester');
         $("#log").html('<div align="center" class="col-25">Conectando...<br><span style="width:42px; height:42px" class="preloader"></span></div>');		
-        $.getJSON("http://leocondori.com.ar/app/iserver/testconexion.php", {puerto: port}, ItsTestResul, "json");
-
+        $$.getJSON("http://leocondori.com.ar/app/iserver/testconexion.php", {puerto: port}, ItsTestResul, "json");
 
         function ItsTestResul(Response){
             $("#log").html('');
             if (Response.Resultado == 0){
-                myApp.alert(Response.Mensaje + ' con el puerto ' + Response.Puerto);
+                myApp.alert(Response.Mensaje + ' con el puerto ' + Response.Puerto,'Tester');
                 $("#log").append(Response.Mensaje + ' con el puerto '+ Response.Puerto + ' <br>');
             }else{
-                myApp.alert(Response.Msg + ' número de error ' + Response.MsgNo);
+                myApp.alert(Response.Msg + ' número de error ' + Response.MsgNo, 'Tester');
                 $("#log").append(Response.Mensaje + ' con el puerto '+ Response.Puerto + ' <br>');
             }
         }

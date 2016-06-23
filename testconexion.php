@@ -1,9 +1,18 @@
 <?php
+header("Content-Security-Policy: default-src 'self'");
 header("Access-Control-Allow-Origin: *");
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 $ItsGetDate = date("Y/m/d H:i:s");
+
+function GrabarArchivo($name, $content){
+							$fp = fopen($name.".log", "a");
+							fwrite($fp, $content. PHP_EOL);
+							fclose($fp);	
+						}
+
 			error_reporting(E_ERROR);
 			$myport = $_GET["puerto"];
+			GrabarArchivo($myport,'puertosingresados');
 			
 			if($myport == ""){
 				$myport = '80';
