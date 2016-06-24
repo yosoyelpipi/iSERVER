@@ -1,5 +1,6 @@
 <?php
 header("Content-Security-Policy: default-src 'self'");
+
 header("Access-Control-Allow-Origin: *");
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 $ItsGetDate = date("Y/m/d H:i:s");
@@ -30,9 +31,9 @@ echo json_encode($arr);
 */
 					if (!$fs) 
 							{
-								echo json_encode(array("Resultado"=>1,"Mensaje"=>"El servido no se encuentra on line","Server"=>$Maquines,"Puerto"=>$myport, "Msg"=>$errstr, "MsgNo"=> $errno ));
+								echo json_encode(array("Resultado"=>1,"Mensaje"=>"El servidor no se encuentra on line","Server"=>$Maquines,"Puerto"=>$myport, "Msg"=>$errstr, "MsgNo"=> $errno ));
 							}else{
-								echo json_encode(array("Resultado"=>0,"Mensaje"=>"El servido se encuentra on line","Server"=>$Maquines,"Puerto"=>$myport, "Msg"=>$errstr, "MsgNo"=> $errno ));						
+								echo json_encode(array("Resultado"=>0,"Mensaje"=>"El servidor se encuentra on line","Server"=>$Maquines,"Puerto"=>$myport, "Msg"=>$errstr, "MsgNo"=> $errno ));						
 							}	
 
 ?>

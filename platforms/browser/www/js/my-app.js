@@ -58,26 +58,13 @@ $$(document).on('pageInit', function (e) {
 
     if (page.name === 'about') {
         // Following code will be executed for page with data-page attribute equal to "about"
-        myApp.alert('Here comes About page');
+        //myApp.alert('Here comes About page');
     }
 })
-
-
-$$(document).on('testNow', function testNow() {
-    myApp.alert('El servidor iSERVER está caído.');
-    //$("#estado").show();
-    var port = $("#puerto").val();
-    $("#log").html('<div align="center" class="col-25">Conectando...<br><span style="width:42px; height:42px" class="preloader"></span></div>');		
-    //$.getJSON("http://leocondori.com.ar/app/iserver/testconexion.php", {puerto: port}, ItsTestResul, "json");
-
-})
-
-
-
 
 
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
-    myApp.alert('Here comes About page');
+    //myApp.alert('Here comes About page');
 })
