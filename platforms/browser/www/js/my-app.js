@@ -30,7 +30,23 @@ $$(document).on('deviceready', function() {
      var controlTime;
      var controlTimeLogin;
 
-
+// Play audio
+//
+function playAudio(url) {
+    // Play the audio file at url
+    var my_media = new Media(url,
+        // success callback
+        function () {
+            console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            console.log("playAudio():Audio Error: " + err);
+        }
+    );
+    // Play audio
+    my_media.play();
+}
 
 addEstado(1);
 leeDatos();
@@ -89,17 +105,6 @@ function leeDatos(){
         title: 'Framework7',
         message: 'This is a simple notification message with title and message'
     });*/
-
-
-var procesando = new Media("sound/procesandohuella.wav",Termino,Err);
-
-function Termino(){
-
-}
-
-function Err(){
-
-}
 
 
 function PlaySound(option){ 
@@ -384,12 +389,12 @@ function RelojResultLogin(Response){
         addEstado();
         $('#ingreso').html('');
         if(Response.resultado == 0){
-            procesando.play();
+            playAudio('sound/procesandohuella.wav');
             //PlaySound(2);
             //myApp.alert(Response.nombre_full_host);
         }else{
             //PlaySound(7);
-            procesando.play();
+            playAudio('sound/error.wav');
             myApp.alert(Response.mensaje, ['Chronos dice: ']);
         }
               
