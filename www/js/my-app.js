@@ -524,39 +524,39 @@ function addEstado(analizar){
 function PlaySound(option){ 
     var option;
     if(option==1){
-        $$('#audiotemp').html('<audio id="demo" src="sound/procesandohuella.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/procesandohuella.wav"></audio>');
         document.getElementById('demo').play();
     }
     if(option==2){
-        $$('#audiotemp').html('<audio id="demo" src="sound/identyexito.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/identyexito.wav"></audio>');
         document.getElementById('demo').play();
     }
     if(option==3){
-        $$('#audiotemp').html('<audio id="demo" src="sound/disposinconexion.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/disposinconexion.wav"></audio>');
         document.getElementById('demo').play();
     }
     if(option==4){
-        $$('#audiotemp').html('<audio id="demo" src="sound/salir.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/salir.wav"></audio>');
         document.getElementById('demo').play();
     }
     if(option==5){
-        $$('#audiotemp').html('<audio id="demo" src="sound/abortandoOperacion.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/abortandoOperacion.wav"></audio>');
         document.getElementById('demo').play();
     }
     if(option==6){
-        $$('#audiotemp').html('<audio id="demo" src="sound/intentedenuevo.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/intentedenuevo.wav"></audio>');
         document.getElementById('demo').play();
     }
     if(option==7){
-        $$('#audiotemp').html('<audio id="demo" src="sound/error.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/error.wav"></audio>');
         document.getElementById('demo').play();
     }
     if(option==8){
-        $$('#audiotemp').html('<audio id="demo" src="sound/enlazandoconitris.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/enlazandoconitris.wav"></audio>');
         document.getElementById('demo').play();
     }               
     if(option==9){
-        $$('#audiotemp').html('<audio id="demo" src="sound/conectado.wav"></audio>');
+        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/conectado.wav"></audio>');
         document.getElementById('demo').play();
     }
 };
