@@ -29,9 +29,57 @@ $$(document).on('deviceready', function() {
     'Device Version: '  + device.version  + '<br />';
      var controlTime;
      var controlTimeLogin;
+
+
+
 addEstado(1);
 leeDatos();
 });
+
+
+
+
+
+     
+  // Do something here when page loaded and initialized
+var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]; 
+var dayNames= ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
+
+// Create a newDate() object
+var newDate = new Date();
+// Extract the current date from Date object
+newDate.setDate(newDate.getDate());
+// Output the day, date, month and year   
+$$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+setInterval( function() {
+	// Create a newDate() object and extract the seconds of the current time on the visitor's
+	var seconds = new Date().getSeconds();
+	// Add a leading zero to seconds value
+	$$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+	},1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the minutes of the current time on the visitor's
+	var minutes = new Date().getMinutes();
+	// Add a leading zero to the minutes value
+	$$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+    },1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the hours of the current time on the visitor's
+	var hours = new Date().getHours();
+	// Add a leading zero to the hours value
+	$$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+    }, 1000);  
+
+
+
+
+
+
+
+
 function onLine(){
     myApp.Alert('Ahora si tenés conexión');
 }
@@ -199,14 +247,14 @@ function RelojResultLogin(Response){
         var itsuser = window.localStorage.getItem('itsuser');
         var itspass = window.localStorage.getItem('itspass');
         var enlazado = window.localStorage.getItem('enlazado');
-        
+       
         if(itsuser == null || itspass == null || enlazado == null){
             PlaySound(7);
             myApp.alert('Existió un error. El usuario o password de itris no tienen valor o aún no has enlazado chronos con itris. Debés iniciar sesión al menos una vez.',['Chronos dice: ']); 
-        }else{
-        $('#huella').hide();
+        }else{  
+        $$('#huella').hide();
         PlaySound(1);
-        $('#ingreso').html('<div class="col-25"> ' +
+        $$('#ingreso').html('<div class="col-25"> ' +
                            'Procesando huella...<br>' +
                            '<span style="width:42px; height:42px" class="preloader"></span>' +
                            '</div>');
@@ -217,15 +265,15 @@ function RelojResultLogin(Response){
             if (seg == 3){
                     PlaySound(1);
                 }else if(seg == 5){
-                                $('#ingreso').html('<div class="col-25"> ' +
+                                $$('#ingreso').html('<div class="col-25"> ' +
                                 'Se ha excedido el tiempo de espera, abortando operación.<br>' +
                                 '<span style="width:42px; height:42px" class="preloader"></span>' +
                                 '</div>');
                     PlaySound(5);
                 }else if(seg == 10){
-                    $('#ingreso').html('');
+                    $$('#ingreso').html('');
                     PlaySound(6);
-                    $('#huella').show(); 
+                    $$('#huella').show(); 
                 }
         };
 
@@ -276,7 +324,7 @@ function RelojResultLogin(Response){
 
 
 //Función que actualiza el formulario.
-  function onChangeName(x,name){
+  function onChangeNddame(x,name){
       var x;
       var name;
       //Controlo si tiene valor el campo al cambiar.
@@ -288,16 +336,46 @@ function RelojResultLogin(Response){
       }
   }
 
+$$("input[type='text']").on('change', function (e) { 
+  //console.log('input value changed'); 
+  //myApp.alert('valor ingresado '+ $$( this ).val() );
+  //myApp.alert('De este ID '+ this.id);
+  if($$( this ).val() != ""){
+        window.localStorage.setItem(this.id,$$( this ).val());
+        $('#'+this.id).val($$( this ).val());
+  }else{
+        localStorage.removeItem(this.id);
+  }
+
+});
+
+$$("input[type='password']").on('change', function (e) { 
+  if($$( this ).val() != ""){
+        window.localStorage.setItem(this.id,$$( this ).val());
+        $('#'+this.id).val($$( this ).val());
+  }else{
+        localStorage.removeItem(this.id);
+  }
+});
+
 //})
 
 // Option 2. Using one 'pageInit' event handler for all pages:
 $$(document).on('pageInit', function (e) {
     // Get page data from event data
     var page = e.detail.page;
+    
 
     if (page.name === 'about') {
         // Following code will be executed for page with data-page attribute equal to "about"
         //myApp.alert('Here comes About page');
+        //myApp.alert('about');
+    }
+
+    if (page.name === 'index') {
+        // Following code will be executed for page with data-page attribute equal to "about"
+        //myApp.alert('Here comes About page');
+        //myApp.alert('index');
     }
 })
 
@@ -442,3 +520,43 @@ function addEstado(analizar){
             }
         }
 }
+
+function PlaySound(option){ 
+    var option;
+    if(option==1){
+        $$('#audiotemp').html('<audio id="demo" src="sound/procesandohuella.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==2){
+        $$('#audiotemp').html('<audio id="demo" src="sound/identyexito.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==3){
+        $$('#audiotemp').html('<audio id="demo" src="sound/disposinconexion.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==4){
+        $$('#audiotemp').html('<audio id="demo" src="sound/salir.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==5){
+        $$('#audiotemp').html('<audio id="demo" src="sound/abortandoOperacion.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==6){
+        $$('#audiotemp').html('<audio id="demo" src="sound/intentedenuevo.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==7){
+        $$('#audiotemp').html('<audio id="demo" src="sound/error.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==8){
+        $$('#audiotemp').html('<audio id="demo" src="sound/enlazandoconitris.wav"></audio>');
+        document.getElementById('demo').play();
+    }               
+    if(option==9){
+        $$('#audiotemp').html('<audio id="demo" src="sound/conectado.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+};
