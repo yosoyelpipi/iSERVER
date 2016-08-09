@@ -29,9 +29,57 @@ $$(document).on('deviceready', function() {
     'Device Version: '  + device.version  + '<br />';
      var controlTime;
      var controlTimeLogin;
+
+
+
 addEstado(1);
 leeDatos();
 });
+
+
+
+
+
+     
+  // Do something here when page loaded and initialized
+var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]; 
+var dayNames= ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
+
+// Create a newDate() object
+var newDate = new Date();
+// Extract the current date from Date object
+newDate.setDate(newDate.getDate());
+// Output the day, date, month and year   
+$$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+setInterval( function() {
+	// Create a newDate() object and extract the seconds of the current time on the visitor's
+	var seconds = new Date().getSeconds();
+	// Add a leading zero to seconds value
+	$$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+	},1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the minutes of the current time on the visitor's
+	var minutes = new Date().getMinutes();
+	// Add a leading zero to the minutes value
+	$$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+    },1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the hours of the current time on the visitor's
+	var hours = new Date().getHours();
+	// Add a leading zero to the hours value
+	$$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+    }, 1000);  
+
+
+
+
+
+
+
+
 function onLine(){
     myApp.Alert('Ahora si tenés conexión');
 }
@@ -294,10 +342,18 @@ function RelojResultLogin(Response){
 $$(document).on('pageInit', function (e) {
     // Get page data from event data
     var page = e.detail.page;
+    
 
     if (page.name === 'about') {
         // Following code will be executed for page with data-page attribute equal to "about"
         //myApp.alert('Here comes About page');
+        //myApp.alert('about');
+    }
+
+    if (page.name === 'index') {
+        // Following code will be executed for page with data-page attribute equal to "about"
+        //myApp.alert('Here comes About page');
+        //myApp.alert('index');
     }
 })
 
@@ -442,3 +498,48 @@ function addEstado(analizar){
             }
         }
 }
+
+
+function PlaySound(option){
+    var option;
+    if(option==1){
+        $('#audiotemp').html('<audio id="demo" src="sound/procesandohuella.wav"></audio>');
+        $document.getElementById('demo').play();
+    }
+    if(option==2){
+        $('#audiotemp').html('<audio id="demo" src="sound/identyexito.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==3){
+        $('#audiotemp').html('<audio id="demo" src="sound/disposinconexion.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==4){
+        $('#audiotemp').html('<audio id="demo" src="sound/salir.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==5){
+        $('#audiotemp').html('<audio id="demo" src="sound/abortandoOperacion.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==6){
+        $('#audiotemp').html('<audio id="demo" src="sound/intentedenuevo.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==7){
+        $('#audiotemp').html('<audio id="demo" src="sound/error.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==8){
+        $('#audiotemp').html('<audio id="demo" src="sound/enlazandoconitris.wav"></audio>');
+        document.getElementById('demo').play();
+    }               
+    if(option==9){
+        $('#audiotemp').html('<audio id="demo" src="sound/conectado.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+}
+
+$$(document).once('click', 'a', function (e) { 
+  console.log('link clicked'); 
+});
