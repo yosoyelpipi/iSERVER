@@ -32,9 +32,7 @@
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />
     <plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />
-    
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    
+    <plugin name="cordova-plugin-geolocation" spec="1.0.1" source="pgb" />
 
     <engine name="android" spec="~5.1.1" />
 </widget>
