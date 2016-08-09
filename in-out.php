@@ -25,6 +25,6 @@
         echo $json = json_encode($arrayRespuesta);
         escribirLog($json);
         }else{
-        echo '{"operacion": "'.$_GET['operacion'].'", "resultado":1, "mensaje": "Identificación no permitida. Tenés que estar dentro de la misma red Wi-Fi laboral."}';    
+        echo '{"operacion": "'.$_GET['operacion'].'", "resultado":1, "mensaje": "Identificación no permitida. Tenés que estar dentro de la misma red Wi-Fi laboral."}';      
     }
 ?>

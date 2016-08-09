@@ -88,7 +88,88 @@ function leeDatos(){
     /*myApp.addNotification({
         title: 'Framework7',
         message: 'This is a simple notification message with title and message'
-    });*/    
+    });*/
+
+
+var procesando = new Media("sound/procesandohuella.wav",Termino,Err);
+
+function Termino(){
+
+}
+
+function Err(){
+
+}
+
+
+function PlaySound(option){ 
+    var option;
+    if(option==1){
+        $$('#audiotemp').html('<audio id="demo" src="sound/procesandohuella.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==2){
+        $$('#audiotemp').html('<audio id="demo" src="sound/identyexito.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==3){
+        $$('#audiotemp').html('<audio id="demo" src="sound/disposinconexion.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==4){
+        $$('#audiotemp').html('<audio id="demo" src="sound/salir.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==5){
+        $$('#audiotemp').html('<audio id="demo" src="sound/abortandoOperacion.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==6){
+        $$('#audiotemp').html('<audio id="demo" src="sound/intentedenuevo.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==7){
+        $$('#audiotemp').html('<audio id="demo" src="sound/error.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+    if(option==8){
+        $$('#audiotemp').html('<audio id="demo" src="sound/enlazandoconitris.wav"></audio>');
+        document.getElementById('demo').play();
+    }               
+    if(option==9){
+        $$('#audiotemp').html('<audio id="demo" src="ound/conectado.wav"></audio>');
+        document.getElementById('demo').play();
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var lat = window.localStorage.getItem('lat');
 var lon = window.localStorage.getItem('lon');
 var itsrecuerda = window.localStorage.getItem('itsrecuerda');
@@ -113,31 +194,31 @@ if(itsuser == null || itspass == null){
 }
 
     if(name != ''){
-        $('#nombre').val(name);
+        $$('#nombre').val(name);
     }
     if(password != ''){
-        $('#password').val(password);
+        $$('#password').val(password);
     }
     if(base != ''){
-        $('#base').val(base);
+        $$('#base').val(base);
     }
     if(ws != ''){
-        $('#ws').val(ws);
+        $$('#ws').val(ws);
     }    
     if(host != ''){
-        $('#host').val(host);
+        $$('#host').val(host);
     }
     if(code != ''){
-        $('#code').val(code);
+        $$('#code').val(code);
     }
     if(itsuser != ''){
-        $('#itsuser').val(itsuser);
+        $$('#itsuser').val(itsuser);
     }
     if(itspass != ''){
-        $('#itspass').val(itspass);
+        $$('#itspass').val(itspass);
     }
     if(itsrecuerda != ''){
-        $('#itsrecuerda').val(itsrecuerda);
+        $$('#itsrecuerda').val(itsrecuerda);
     }              
     geoLocaliza();       
 }
@@ -228,11 +309,11 @@ segu++
 
 function RelojResultLogin(Response){
     clearInterval(controlTimeLogin);
-    $('#loginAct').html('');
+    $$('#loginAct').html('');
     if(Response.resultado == 0){
         PlaySound(9);
         myApp.alert(Response.mensaje, ['Chronos dice: ']);
-        $('#host').val('');
+        $$('#host').val('');
         window.localStorage.setItem('host',Response.host);
         window.localStorage.setItem('enlazado',1);
     }else{
@@ -303,10 +384,12 @@ function RelojResultLogin(Response){
         addEstado();
         $('#ingreso').html('');
         if(Response.resultado == 0){
-            PlaySound(2);
+            procesando.play();
+            //PlaySound(2);
             //myApp.alert(Response.nombre_full_host);
         }else{
-            PlaySound(7);
+            //PlaySound(7);
+            procesando.play();
             myApp.alert(Response.mensaje, ['Chronos dice: ']);
         }
               
@@ -520,43 +603,3 @@ function addEstado(analizar){
             }
         }
 }
-
-function PlaySound(option){ 
-    var option;
-    if(option==1){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/procesandohuella.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==2){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/identyexito.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==3){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/disposinconexion.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==4){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/salir.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==5){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/abortandoOperacion.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==6){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/intentedenuevo.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==7){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/error.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==8){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/enlazandoconitris.wav"></audio>');
-        document.getElementById('demo').play();
-    }               
-    if(option==9){
-        $$('#audiotemp').html('<audio id="demo" src="file:///android_asset/www/sound/conectado.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-};
