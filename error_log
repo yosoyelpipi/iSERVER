@@ -1,0 +1,12 @@
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined index: HTTP_X_FORWARDED_FOR in /home/maxiroa/public_html/chronos/fichada.php on line 17
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined index: itsuser in /home/maxiroa/public_html/chronos/fichada.php on line 25
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined index: itspass in /home/maxiroa/public_html/chronos/fichada.php on line 26
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined variable: fecha in /home/maxiroa/public_html/chronos/fichada.php on line 33
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined variable: horas in /home/maxiroa/public_html/chronos/fichada.php on line 33
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined variable: lat in /home/maxiroa/public_html/chronos/fichada.php on line 33
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined variable: lon in /home/maxiroa/public_html/chronos/fichada.php on line 33
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined variable: deviceuuid in /home/maxiroa/public_html/chronos/fichada.php on line 33
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined variable: host in /home/maxiroa/public_html/chronos/fichada.php on line 33
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined variable: code in /home/maxiroa/public_html/chronos/fichada.php on line 33
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined index: code in /home/maxiroa/public_html/chronos/in-out.php on line 10
+[09-Aug-2016 04:47:26 UTC] PHP Notice:  Undefined index: code in /home/maxiroa/public_html/chronos/in-out.php on line 32

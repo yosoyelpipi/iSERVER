@@ -20,7 +20,7 @@ function GrabarArchivo($name, $content){
 			}else{
 				$myport;
 			}
-			$Maquines="181.170.255.95";
+			$Maquines="iserver.itris.com.ar";
 			$errno = '';
 			$errstr = '';
 			$fs=fsockopen($Maquines,$myport,$errno,$errstr,5);

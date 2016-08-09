@@ -14,6 +14,11 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
+    window.addEventListener("batterystatus", onBatteryStatus, false);
+    document.addEventListener("online", onLine, false);
+    document.addEventListener("offline", onOffline, false);
+    document.addEventListener("menubutton", onMenuKeyDown, false);
+    document.addEventListener("backbutton", onBackKeyDown, false);
 
     //myApp.alert("Device is ready!", 'Tester');
     var element = document.getElementById('deviceProperties');
@@ -22,7 +27,83 @@ $$(document).on('deviceready', function() {
     'Device Platform: ' + device.platform + '<br />' +
     'Device UUID: '     + device.uuid     + '<br />' +
     'Device Version: '  + device.version  + '<br />';
+     var controlTime;
+     var controlTimeLogin;
+addEstado(1);
+leeDatos();
 });
+function onLine(){
+    myApp.Alert('Ahora si tenés conexión');
+}
+
+function leeDatos(){
+    /*myApp.addNotification({
+        title: 'Framework7',
+        message: 'This is a simple notification message with title and message'
+    });*/    
+var lat = window.localStorage.getItem('lat');
+var lon = window.localStorage.getItem('lon');
+var itsrecuerda = window.localStorage.getItem('itsrecuerda');
+//alert(itsrecuerda);
+
+    var name = window.localStorage.getItem('nombre');
+    var password = window.localStorage.getItem('password');
+    var base = window.localStorage.getItem('base');
+    var ws = window.localStorage.getItem('ws');
+    var host = window.localStorage.getItem('host');
+    var code = window.localStorage.getItem('code');
+    var itsuser = window.localStorage.getItem('itsuser');
+    var itspass = window.localStorage.getItem('itspass');    
+
+if(itsuser == null || itspass == null){
+            myApp.addNotification({
+                    title: 'Notificación',
+                    subtitle: 'Modo incógnico',
+                    message: 'Aún no te logueas a itris o no permitiste que el reloj inteligente recuerde tus datos.',
+                    media: '<i class="icon icon-form-comment"></i>'
+                });
+}
+
+    if(name != ''){
+        $('#nombre').val(name);
+    }
+    if(password != ''){
+        $('#password').val(password);
+    }
+    if(base != ''){
+        $('#base').val(base);
+    }
+    if(ws != ''){
+        $('#ws').val(ws);
+    }    
+    if(host != ''){
+        $('#host').val(host);
+    }
+    if(code != ''){
+        $('#code').val(code);
+    }
+    if(itsuser != ''){
+        $('#itsuser').val(itsuser);
+    }
+    if(itspass != ''){
+        $('#itspass').val(itspass);
+    }
+    if(itsrecuerda != ''){
+        $('#itsrecuerda').val(itsrecuerda);
+    }              
+    geoLocaliza();       
+}
+
+
+var hoy = new Date();
+var dd = hoy.getDate();
+var mm = hoy.getMonth()+1; //hoy es 0!
+var yyyy = hoy.getFullYear();
+
+var hora = hoy.getHours();
+var minuto = hoy.getMinutes();
+var segundo = hoy.getSeconds(); 
+
 
 
 // Now we need to run the code that will be executed only for About page.
@@ -48,7 +129,165 @@ $$(document).on('deviceready', function() {
         }
         
     });
-   
+
+
+
+//ITRIS LOGIN
+    $$('#itslogin').on('click', function () {
+                        $('#loginAct').html('<div class="col-25"> ' +
+                          'Enlazando reloj con itris.<br>' +
+                          '<span style="width:42px; height:42px" class="preloader"></span>' +
+                          '</div>');        
+
+var segu = 0;
+
+controlTimeLogin = setInterval(function(){ myTimerLogin() }, 1000);
+
+function myTimerLogin() {
+segu++
+	if (segu == 10){
+            PlaySound(8);
+        }else if(segu == 15){
+            //Se ha excedido el tiempo de espera, abortando operación.
+                        $('#loginAct').html('<div class="col-25"> ' +
+                          'Se ha excedido el tiempo de espera, abortando operación.<br>' +
+                          '<span style="width:42px; height:42px" class="preloader"></span>' +
+                          '</div>'); 
+
+            PlaySound(5);
+        }else if(segu == 20){
+            $('#loginAct').html('');
+            clearInterval(controlTimeLogin);
+            //Intente de nuevo
+            PlaySound(6);
+        }
+};
+
+        var itsuser = window.localStorage.getItem('itsuser');
+        var itspass = window.localStorage.getItem('itspass');
+        
+        if(itsuser == null || itspass == null){
+                myApp.alert('Revisa los ajustes de usuario y contraseña. No se puede continuar', ['Chronos dice: ']);
+                PlaySound(7);
+            }else{
+                //myApp.alert('Me voy a loguear con estos datos. Usuario: '+ itsuser + ' y con esta pass ' + itspass + '', ['Chronos dice: ']);
+                PlaySound(8);
+                $$.getJSON("http://chronos.itris.com.ar/fichada.php", {operacion: "login", itsuser: itsuser, itspass: itspass}, RelojResultLogin, "json");
+        }
+
+    });        
+
+
+function RelojResultLogin(Response){
+    clearInterval(controlTimeLogin);
+    $('#loginAct').html('');
+    if(Response.resultado == 0){
+        PlaySound(9);
+        myApp.alert(Response.mensaje, ['Chronos dice: ']);
+        $('#host').val('');
+        window.localStorage.setItem('host',Response.host);
+        window.localStorage.setItem('enlazado',1);
+    }else{
+        PlaySound(7);
+        myApp.alert(Response.mensaje, ['Chronos dice: ']);
+    }
+}
+
+
+    $$('#entrada').on('click', function () {
+
+        var itsuser = window.localStorage.getItem('itsuser');
+        var itspass = window.localStorage.getItem('itspass');
+        var enlazado = window.localStorage.getItem('enlazado');
+        
+        if(itsuser == null || itspass == null || enlazado == null){
+            PlaySound(7);
+            myApp.alert('Existió un error. El usuario o password de itris no tienen valor o aún no has enlazado chronos con itris. Debés iniciar sesión al menos una vez.',['Chronos dice: ']); 
+        }else{
+        $('#huella').hide();
+        PlaySound(1);
+        $('#ingreso').html('<div class="col-25"> ' +
+                           'Procesando huella...<br>' +
+                           '<span style="width:42px; height:42px" class="preloader"></span>' +
+                           '</div>');
+        var seg = 0;
+        controlTime = setInterval(function(){ myTimer() }, 1000);
+        function myTimer() {
+        seg++
+            if (seg == 3){
+                    PlaySound(1);
+                }else if(seg == 5){
+                                $('#ingreso').html('<div class="col-25"> ' +
+                                'Se ha excedido el tiempo de espera, abortando operación.<br>' +
+                                '<span style="width:42px; height:42px" class="preloader"></span>' +
+                                '</div>');
+                    PlaySound(5);
+                }else if(seg == 10){
+                    $('#ingreso').html('');
+                    PlaySound(6);
+                    $('#huella').show(); 
+                }
+        };
+
+        var fecha = dd+'/'+mm+'/'+yyyy;
+        var horas = hora+':'+minuto+':'+segundo;
+        //myApp.alert('Vas a fichar con la siguiente información. Fecha de entrada: ' + fecha + ' y con la siguiente hora de entrada: ' + horas + '', ['Reloj inteligente']);
+        //$('#huella').html('<a href="#" id="entrada"><img src="img/huellalector3.gif" width="50%"></a>');
+        window.localStorage.setItem('estado', true);
+        // alert(fecha);
+        var accion = addEstado(2);
+        var lat = window.localStorage.getItem('lat');
+        var lon = window.localStorage.getItem('lon');
+        var host = window.localStorage.getItem('host');
+        var code = window.localStorage.getItem('code');
+
+        //accion: accion, fecha: fecha, horas: horas, lat: lat, lon: lon, deviceuuid: device.uuid
+        $$.getJSON("http://chronos.itris.com.ar/fichada.php", {operacion: accion, fecha: fecha, horas: horas, lat: lat, lon: lon, deviceuuid: device.uuid, host:host, code: code }, RelojResult, "json");           
+        //ANDA$$.getJSON("http://leocondori.com.ar/app/iserver/fichada.php", {operacion: accion, fecha: fecha}, RelojResult, "json");             
+        }   
+ });
+
+
+    //Resultado del reloj
+    function RelojResult(Response){
+        clearInterval(controlTime);
+        $('#huella').show();
+        addEstado();
+        $('#ingreso').html('');
+        if(Response.resultado == 0){
+            PlaySound(2);
+            //myApp.alert(Response.nombre_full_host);
+        }else{
+            PlaySound(7);
+            myApp.alert(Response.mensaje, ['Chronos dice: ']);
+        }
+              
+        //myApp.alert(Response.serverdatos, ['Chronos dice: ']);
+        /* alert(Response.fecha);
+        alert(Response.horas);
+        alert(Response.lat);
+        alert(Response.lon);
+        alert(Response.deviceuuid);
+        alert(Response.host);
+        alert(Response.code);
+        */
+             
+    }
+
+
+//Función que actualiza el formulario.
+  function onChangeName(x,name){
+      var x;
+      var name;
+      //Controlo si tiene valor el campo al cambiar.
+      if(x != ""){
+          window.localStorage.setItem(name,x);
+          $('#'+name).val(x);
+      }else{
+          localStorage.removeItem(name);
+      }
+  }
+
 //})
 
 // Option 2. Using one 'pageInit' event handler for all pages:
@@ -62,9 +301,144 @@ $$(document).on('pageInit', function (e) {
     }
 })
 
-
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
     //myApp.alert('Here comes About page');
+    leeDatos();
 })
+
+function onBatteryStatus(info) {
+    // Handle the online event
+    console.log("Level: " + info.level + " isPlugged: " + info.isPlugged); 
+}
+
+function onMenuKeyDown() {
+    // Handle the back button
+    //myApp.alert('Hola',['Reloj dice: ']);
+    alert('Menu button');
+}
+
+function onOffline() {
+    // Handle the offline event
+    myApp.addNotification({
+        title: 'Error de redes',
+        subtitle: 'Estado de conexión',
+        message: '¡Tu dispositivo se quedo sin conexión!',
+        media: '<i class="icon icon-form-comment"></i>'
+    });
+    PlaySound(3);
+}
+
+function onConfirm(buttonIndex) {
+    if(buttonIndex==1){
+        navigator.app.exitApp();
+    }
+}
+
+
+function onBackKeyDown() {
+    // Handle the back button
+     //myApp.alert('Estás seguro que querés salir de la APP?', ['Salir']);
+    PlaySound(4);
+    navigator.notification.confirm(
+    'Saliendo del reloj. ¿Confirma?', // message
+     onConfirm,            // callback to invoke with index of button pressed
+    'Reloj inteligente',           // title
+    ['Salir','Cancelar']     // buttonLabels
+);
+
+
+
+}
+
+var onSuccess = function(position) {
+	
+	//return position.coords.latitude+ ','+position.coords.longitude;
+	window.localStorage.setItem("lat",position.coords.latitude);
+	window.localStorage.setItem("lon",position.coords.longitude);
+    console.log('Latitude: '          + position.coords.latitude          + '\n' +
+                'Longitude: '         + position.coords.longitude         + '\n' );
+		  
+          //'Altitude: '          + position.coords.altitude          + '\n' +
+          //'Accuracy: '          + position.coords.accuracy          + '\n' +
+          //'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          //'Heading: '           + position.coords.heading           + '\n' +
+          //'Speed: '             + position.coords.speed             + '\n' +
+
+    //Google Maps
+    
+   /* var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+    var mapOptions = {zoom: 4,center: myLatlng}
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({position: myLatlng,map: map});
+    */
+    
+        var longitude = position.coords.longitude;
+        var latitude = position.coords.latitude;
+        var latLong = new google.maps.LatLng(latitude, longitude);
+        var mapOptions = {
+            center: latLong,
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var marker = new google.maps.Marker({
+              position: latLong,
+              map: map,
+              title: 'my location'
+          });
+
+
+
+};
+function onError(error) {
+    myApp.alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+
+   console.log('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');       
+
+}
+
+function geoLocaliza(){
+  navigator.geolocation.getCurrentPosition(onSuccess, onError,{ timeout: 30000 });
+  //navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
+}
+
+function addEstado(analizar){
+    var analizar;
+    var estado = window.localStorage.getItem('reloj');
+    if(analizar == 1){
+        if(estado == 'true'){
+            window.localStorage.setItem('reloj','true');
+            $('#iconos').html('(IN)');
+        }else if(estado=='false'){
+            window.localStorage.setItem('reloj','flase');
+            $('#iconos').html('(OUT)');
+        }else{
+            window.localStorage.setItem('reloj','true');
+            $('#iconos').html('(IN)');
+        }
+    }else if(analizar==2){
+        if(estado == 'true'){
+            return true;
+        }else if(estado == 'false'){
+            return false;
+        }else{
+            return true;
+        }
+
+    }else{
+            if(estado == 'true'){
+                window.localStorage.setItem('reloj','false');
+                $('#iconos').html('(OUT)');
+            }else if(estado=='false'){
+                window.localStorage.setItem('reloj','true');
+                $('#iconos').html('(IN)');
+            }else{
+                window.localStorage.setItem('reloj','true');
+                $('#iconos').html('(IN)');
+            }
+        }
+}

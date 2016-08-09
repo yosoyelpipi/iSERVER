@@ -1,0 +1,2 @@
+json
+{"operacion": "false", "resultado":0, "fecha": "8/8/2016", "horas": "23:32:23","lat": "-34.6333452","lon": "-58.4602888","deviceuuid": "5e2a66af37ac8b2b", "host": "186.22.81.86","code": "", "mensaje": "Exito", "serverdatos": "186.22.81.86", "nombre_full_host":"cpe-186-22-81-86.telecentro-reversos.com.ar" }
