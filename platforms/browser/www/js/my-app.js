@@ -30,9 +30,18 @@ $$(document).on('deviceready', function() {
      var controlTime;
      var controlTimeLogin;
 
+
+
+addEstado(1);
+leeDatos();
+});
+
+
+
 // Play audio
 //
 function playAudio(url) {
+    var url;
     // Play the audio file at url
     var my_media = new Media(url,
         // success callback
@@ -41,20 +50,12 @@ function playAudio(url) {
         },
         // error callback
         function (err) {
-            console.log("playAudio():Audio Error: " + err);
+            console.log("playAudio():Audio Error: " + err.code);
         }
     );
     // Play audio
     my_media.play();
 }
-
-addEstado(1);
-leeDatos();
-});
-
-
-
-
 
      
   // Do something here when page loaded and initialized
@@ -327,19 +328,31 @@ function RelojResultLogin(Response){
     }
 }
 
+$$('#temporal').on('click', function () {
+    
+    playAudio('/android_asset/www/sound/salir.wav');
+
+    
+    //playAudio('/sound/error.wav');
+    
+    //ANDA la funcion TIPO WEB -->playAudio('../sound/error.wav');
+    
+    //NO ANDA playAudio('www/sound/error.wav');
+    playAudio('http://chronos.itris.com.ar/error.wav');
+});
 
     $$('#entrada').on('click', function () {
-
+        playAudio('error.wav');
         var itsuser = window.localStorage.getItem('itsuser');
         var itspass = window.localStorage.getItem('itspass');
         var enlazado = window.localStorage.getItem('enlazado');
        
         if(itsuser == null || itspass == null || enlazado == null){
-            PlaySound(7);
+            //PlaySound(7);
             myApp.alert('Existió un error. El usuario o password de itris no tienen valor o aún no has enlazado chronos con itris. Debés iniciar sesión al menos una vez.',['Chronos dice: ']); 
         }else{  
         $$('#huella').hide();
-        PlaySound(1);
+        //PlaySound(1);
         $$('#ingreso').html('<div class="col-25"> ' +
                            'Procesando huella...<br>' +
                            '<span style="width:42px; height:42px" class="preloader"></span>' +
@@ -349,16 +362,17 @@ function RelojResultLogin(Response){
         function myTimer() {
         seg++
             if (seg == 3){
-                    PlaySound(1);
+                 playAudio('www/sound/procesandohuella.wav');
+                    //PlaySound(1);
                 }else if(seg == 5){
                                 $$('#ingreso').html('<div class="col-25"> ' +
                                 'Se ha excedido el tiempo de espera, abortando operación.<br>' +
                                 '<span style="width:42px; height:42px" class="preloader"></span>' +
                                 '</div>');
-                    PlaySound(5);
+                    //PlaySound(5);
                 }else if(seg == 10){
                     $$('#ingreso').html('');
-                    PlaySound(6);
+                    //PlaySound(6);
                     $$('#huella').show(); 
                 }
         };
@@ -389,12 +403,12 @@ function RelojResultLogin(Response){
         addEstado();
         $('#ingreso').html('');
         if(Response.resultado == 0){
-            playAudio('sound/procesandohuella.wav');
+            playAudio('www/sound/procesandohuella.wav');
             //PlaySound(2);
             //myApp.alert(Response.nombre_full_host);
         }else{
             //PlaySound(7);
-            playAudio('sound/error.wav');
+            playAudio('www/sound/error.wav');
             myApp.alert(Response.mensaje, ['Chronos dice: ']);
         }
               
