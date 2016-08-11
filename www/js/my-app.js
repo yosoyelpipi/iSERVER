@@ -42,8 +42,11 @@ leeDatos();
 //
 function playAudio(url) {
     var url;
+    src = '/android_asset/www/sound/' + url;
+//playAudio('/android_asset/www/sound/salir.wav');
     // Play the audio file at url
     var my_media = new Media(url,
+        
         // success callback
         function () {
             console.log("playAudio():Audio Success");
@@ -281,7 +284,8 @@ controlTimeLogin = setInterval(function(){ myTimerLogin() }, 1000);
 function myTimerLogin() {
 segu++
 	if (segu == 10){
-            PlaySound(8);
+            //PlaySound(8);
+            playAudio('enlazandoconitris.wav');
         }else if(segu == 15){
             //Se ha excedido el tiempo de espera, abortando operación.
                         $('#loginAct').html('<div class="col-25"> ' +
@@ -289,12 +293,14 @@ segu++
                           '<span style="width:42px; height:42px" class="preloader"></span>' +
                           '</div>'); 
 
-            PlaySound(5);
+            //PlaySound(5);
+            playAudio('abortandoOperacion.wav');
         }else if(segu == 20){
             $('#loginAct').html('');
             clearInterval(controlTimeLogin);
             //Intente de nuevo
-            PlaySound(6);
+            //PlaySound(6);
+            playAudio('intentedenuevo.wav');
         }
 };
 
@@ -303,10 +309,12 @@ segu++
         
         if(itsuser == null || itspass == null){
                 myApp.alert('Revisa los ajustes de usuario y contraseña. No se puede continuar', ['Chronos dice: ']);
-                PlaySound(7);
+                //PlaySound(7);
+                playAudio('error.wav');
             }else{
                 //myApp.alert('Me voy a loguear con estos datos. Usuario: '+ itsuser + ' y con esta pass ' + itspass + '', ['Chronos dice: ']);
-                PlaySound(8);
+                //PlaySound(8);
+                playAudio('enlazandoconitris.wav');
                 $$.getJSON("http://chronos.itris.com.ar/fichada.php", {operacion: "login", itsuser: itsuser, itspass: itspass}, RelojResultLogin, "json");
         }
 
@@ -317,13 +325,15 @@ function RelojResultLogin(Response){
     clearInterval(controlTimeLogin);
     $$('#loginAct').html('');
     if(Response.resultado == 0){
-        PlaySound(9);
+        //PlaySound(9);
+        playAudio('conectado.wav');
         myApp.alert(Response.mensaje, ['Chronos dice: ']);
         $$('#host').val('');
         window.localStorage.setItem('host',Response.host);
         window.localStorage.setItem('enlazado',1);
     }else{
-        PlaySound(7);
+        //PlaySound(7);
+        playAudio('error.wav');
         myApp.alert(Response.mensaje, ['Chronos dice: ']);
     }
 }
@@ -331,11 +341,6 @@ function RelojResultLogin(Response){
 $$('#temporal').on('click', function () {
     
     playAudio('/android_asset/www/sound/salir.wav');
-
-    
-    //playAudio('/sound/error.wav');
-    
-    //ANDA la funcion TIPO WEB -->playAudio('../sound/error.wav');
     
     //NO ANDA playAudio('www/sound/error.wav');
     playAudio('http://chronos.itris.com.ar/error.wav');
@@ -349,10 +354,12 @@ $$('#temporal').on('click', function () {
        
         if(itsuser == null || itspass == null || enlazado == null){
             //PlaySound(7);
+            playAudio('error.wav');
             myApp.alert('Existió un error. El usuario o password de itris no tienen valor o aún no has enlazado chronos con itris. Debés iniciar sesión al menos una vez.',['Chronos dice: ']); 
         }else{  
         $$('#huella').hide();
         //PlaySound(1);
+        playAudio('procesandohuella.wav');
         $$('#ingreso').html('<div class="col-25"> ' +
                            'Procesando huella...<br>' +
                            '<span style="width:42px; height:42px" class="preloader"></span>' +
@@ -364,15 +371,18 @@ $$('#temporal').on('click', function () {
             if (seg == 3){
                  playAudio('www/sound/procesandohuella.wav');
                     //PlaySound(1);
+                    playAudio('procesandohuella.wav');
                 }else if(seg == 5){
                                 $$('#ingreso').html('<div class="col-25"> ' +
                                 'Se ha excedido el tiempo de espera, abortando operación.<br>' +
                                 '<span style="width:42px; height:42px" class="preloader"></span>' +
                                 '</div>');
                     //PlaySound(5);
+                    playAudio('abortandoOperacion.wav');
                 }else if(seg == 10){
                     $$('#ingreso').html('');
                     //PlaySound(6);
+                    playAudio('intentedenuevo.wav');
                     $$('#huella').show(); 
                 }
         };
@@ -403,12 +413,12 @@ $$('#temporal').on('click', function () {
         addEstado();
         $('#ingreso').html('');
         if(Response.resultado == 0){
-            playAudio('www/sound/procesandohuella.wav');
+            playAudio('identyexito.wav');
             //PlaySound(2);
             //myApp.alert(Response.nombre_full_host);
         }else{
             //PlaySound(7);
-            playAudio('www/sound/error.wav');
+            playAudio('error.wav');
             myApp.alert(Response.mensaje, ['Chronos dice: ']);
         }
               
@@ -507,7 +517,9 @@ function onOffline() {
         message: '¡Tu dispositivo se quedo sin conexión!',
         media: '<i class="icon icon-form-comment"></i>'
     });
-    PlaySound(3);
+    //PlaySound(3);
+    playAudio('disposinconexion.wav');
+    
 }
 
 function onConfirm(buttonIndex) {
@@ -520,7 +532,8 @@ function onConfirm(buttonIndex) {
 function onBackKeyDown() {
     // Handle the back button
      //myApp.alert('Estás seguro que querés salir de la APP?', ['Salir']);
-    PlaySound(4);
+    //PlaySound(4);
+    playAudio('salir.wav');
     navigator.notification.confirm(
     'Saliendo del reloj. ¿Confirma?', // message
      onConfirm,            // callback to invoke with index of button pressed
