@@ -338,16 +338,15 @@ function RelojResultLogin(Response){
     }
 }
 
-$$('#temporal').on('click', function () {
+/*$$('#temporal').on('click', function () {
     
     playAudio('/android_asset/www/sound/salir.wav');
     
     //NO ANDA playAudio('www/sound/error.wav');
     playAudio('http://chronos.itris.com.ar/error.wav');
 });
-
+*/
     $$('#entrada').on('click', function () {
-        playAudio('error.wav');
         var itsuser = window.localStorage.getItem('itsuser');
         var itspass = window.localStorage.getItem('itspass');
         var enlazado = window.localStorage.getItem('enlazado');
