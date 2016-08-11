@@ -315,7 +315,6 @@ function RelojResultLogin(Response){
         function myTimer() {
         seg++
             if (seg == 3){
-                 playAudio('www/sound/procesandohuella.wav');
                     //PlaySound(1);
                     playAudio('procesandohuella.wav');
                 }else if(seg == 5){
