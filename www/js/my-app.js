@@ -43,7 +43,8 @@ leeDatos();
 function playAudio(url) {
     var url;
     url = '/android_asset/www/sound/' + url;
-//playAudio('/android_asset/www/sound/salir.wav');
+    window.localStorage.setItem('play',url);
+    //ESTA RUTA ANDA EN ANDROID: playAudio('/android_asset/www/sound/salir.wav');
     // Play the audio file at url
     var my_media = new Media(url,
         
@@ -57,7 +58,29 @@ function playAudio(url) {
         }
     );
     // Play audio
+    var playSave = window.localStorage.getItem('play');
+    stopAudio(playSave);
     my_media.play();
+}
+
+
+function stopAudio(url) {
+    var url;
+    //ESTA RUTA ANDA EN ANDROID: playAudio('/android_asset/www/sound/salir.wav');
+    // Play the audio file at url
+    var my_media = new Media(url,
+        
+        // success callback
+        function () {
+            console.log("stopAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            console.log("stopAudio():Audio Error: " + err.code);
+        }
+    );
+    // stop audio
+    my_media.stop();
 }
 
      
@@ -93,92 +116,11 @@ setInterval( function() {
 	$$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
     }, 1000);  
 
-
-
-
-
-
-
-
 function onLine(){
     myApp.Alert('Ahora si tenés conexión');
 }
 
 function leeDatos(){
-    /*myApp.addNotification({
-        title: 'Framework7',
-        message: 'This is a simple notification message with title and message'
-    });*/
-
-
-function PlaySound(option){ 
-    var option;
-    if(option==1){
-        $$('#audiotemp').html('<audio id="demo" src="sound/procesandohuella.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==2){
-        $$('#audiotemp').html('<audio id="demo" src="sound/identyexito.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==3){
-        $$('#audiotemp').html('<audio id="demo" src="sound/disposinconexion.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==4){
-        $$('#audiotemp').html('<audio id="demo" src="sound/salir.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==5){
-        $$('#audiotemp').html('<audio id="demo" src="sound/abortandoOperacion.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==6){
-        $$('#audiotemp').html('<audio id="demo" src="sound/intentedenuevo.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==7){
-        $$('#audiotemp').html('<audio id="demo" src="sound/error.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-    if(option==8){
-        $$('#audiotemp').html('<audio id="demo" src="sound/enlazandoconitris.wav"></audio>');
-        document.getElementById('demo').play();
-    }               
-    if(option==9){
-        $$('#audiotemp').html('<audio id="demo" src="ound/conectado.wav"></audio>');
-        document.getElementById('demo').play();
-    }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var lat = window.localStorage.getItem('lat');
 var lon = window.localStorage.getItem('lon');
 var itsrecuerda = window.localStorage.getItem('itsrecuerda');
@@ -533,13 +475,22 @@ function onBackKeyDown() {
      //myApp.alert('Estás seguro que querés salir de la APP?', ['Salir']);
     //PlaySound(4);
     playAudio('salir.wav');
+
+myApp.confirm('Saliendo del reloj. ¿Confirma?', ['chronos dice: ', function saliendo(){
+    navigator.app.exitApp();
+}, function cancelo(){
+    myApp.alert('Entonces has decidio quedarte. Gracias.');
+}]
+);
+
+    /*
     navigator.notification.confirm(
     'Saliendo del reloj. ¿Confirma?', // message
      onConfirm,            // callback to invoke with index of button pressed
     'Reloj inteligente',           // title
     ['Salir','Cancelar']     // buttonLabels
-);
-
+    );
+    */
 
 
 }
@@ -585,8 +536,8 @@ var onSuccess = function(position) {
 
 };
 function onError(error) {
-    myApp.alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
+    //myApp.alert('code: '    + error.code    + '\n' +
+    //      'message: ' + error.message + '\n');
 
    console.log('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');       
