@@ -43,7 +43,7 @@ leeDatos();
 function playAudio(url) {
     var url;
     url = '/android_asset/www/sound/' + url;
-    window.localStorage.setItem('play',url);
+    //window.localStorage.setItem('play',url);
     //ESTA RUTA ANDA EN ANDROID: playAudio('/android_asset/www/sound/salir.wav');
     // Play the audio file at url
     var my_media = new Media(url,
@@ -58,17 +58,22 @@ function playAudio(url) {
         }
     );
     // Play audio
-    var playSave = window.localStorage.getItem('play');
-    stopAudio(playSave);
+    //var playSave = window.localStorage.getItem('play');
+    //stopAudio(playSave);
     my_media.play();
+
+    // Pause after 10 seconds
+    setTimeout(function() {
+        my_media.stop();
+    }, 10000);
 }
 
 
-function stopAudio(url) {
-    var url;
+function stopAudio(urlg) {
+    var urlg;
     //ESTA RUTA ANDA EN ANDROID: playAudio('/android_asset/www/sound/salir.wav');
     // Play the audio file at url
-    var my_media = new Media(url,
+    var my_media = new Media(urlg,
         
         // success callback
         function () {
@@ -80,7 +85,7 @@ function stopAudio(url) {
         }
     );
     // stop audio
-    my_media.stop();
+    //my_media.stop();
 }
 
      

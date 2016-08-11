@@ -23,7 +23,7 @@ $client = new nusoap_client("http://itris.no-ip.com:3000/ItsWs/ItsCliSvrWS.asmx?
             echo '{"operacion":"login", "resultado":1, "mensaje":"'.utf8_encode($ItsGetLastError['Error']).'"}';			
 		}else{
 	        $ItsLogout = $client->call('ItsLogout', array('UserSession' => $session ) );
-            echo '{"operacion":"login", "resultado":0, "host":"200.117.173.155", "mensaje":"'.$session.'"}';
+            echo '{"operacion":"login", "resultado":0, "host":"186.22.81.86", "mensaje":"'.$session.'"}';
 		}//Fin de preguntar por el login exitoso.
-    }//Fin de preguntar por la conexión al WS.
+    }//Fin de preguntar por la conexión al WS. 200.117.173.155
 ?>
