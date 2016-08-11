@@ -42,7 +42,7 @@ leeDatos();
 //
 function playAudio(url) {
     var url;
-    src = '/android_asset/www/sound/' + url;
+    url = '/android_asset/www/sound/' + url;
 //playAudio('/android_asset/www/sound/salir.wav');
     // Play the audio file at url
     var my_media = new Media(url,
