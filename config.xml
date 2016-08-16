@@ -17,12 +17,12 @@
 		<feature name="http://api.phonegap.com/1.0/network"/>
 		<feature name="http://api.phonegap.com/1.0/notification"/>
 <plugin name="cordova-plugin-battery-status" source="pgb" spec="1.1.0"/>
-<plugin name="cordova-plugin-console" source="pgb" spec="~1.0.1"/>
+<plugin name="cordova-plugin-console" source="npm" spec="~1.0.1"/>
 <plugin name="cordova-plugin-device" source="pgb" spec="1.0.1"/>
-<plugin name="cordova-plugin-geolocation" source="pgb" spec="1.0.1"/>
-<plugin name="cordova-plugin-media"  source="pgb" spec="1.0.1"/>
-<plugin name="cordova-plugin-splashscreen" source="pgb" spec="undefined"/>
-<plugin name="cordova-plugin-statusbar" source="pgb" spec="~1.0.1"/>
+<plugin name="cordova-plugin-geolocation"  source="pgb" spec="1.0.1"/>
+<plugin name="cordova-plugin-media" source="pgb" spec="1.0.1"/>
+<plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
+<plugin name="cordova-plugin-statusbar" source="npm" spec="~1.0.1"/>
 <plugin name="undefined" version="~1.2.0" source="npm"  />
 <preference name="phonegap-version" value="cli-6.0.0" />
 <preference name="android-build-tool" value="ant" />
@@ -91,8 +91,5 @@
 <allow-intent href="geo:*" />
 <platform name="android" />
 <allow-intent href="market:*" />
-
-<platform name="ios" />
-<allow-intent href="itms:*" />
 
 </widget>
