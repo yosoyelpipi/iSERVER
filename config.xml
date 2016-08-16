@@ -23,7 +23,7 @@
 <plugin name="cordova-plugin-media" source="pgb" spec="1.0.1"/>
 <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
 <plugin name="cordova-plugin-statusbar" source="npm" spec="~1.0.1"/>
-<plugin name="undefined" version="~1.2.0" source="npm"  />
+
 <preference name="phonegap-version" value="cli-6.0.0" />
 <preference name="android-build-tool" value="ant" />
 <preference name="orientation" value="default" />
