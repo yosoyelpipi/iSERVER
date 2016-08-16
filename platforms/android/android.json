@@ -39,6 +39,10 @@
                         {
                             "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -104,6 +108,9 @@
             "PACKAGE_NAME": "com.itris.chronos"
         },
         "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.itris.chronos"
+        },
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.itris.chronos"
         }
     },
@@ -320,6 +327,13 @@
             "clobbers": [
                 "window.Media"
             ]
+        },
+        {
+            "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+            "id": "org.apache.cordova.splashscreen.SplashScreen",
+            "clobbers": [
+                "navigator.splashscreen"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -332,6 +346,7 @@
         "cordova-plugin-geolocation": "2.2.0",
         "cordova-plugin-dialogs": "1.2.1",
         "cordova-plugin-file": "4.2.0",
-        "cordova-plugin-media": "1.0.1"
+        "cordova-plugin-media": "1.0.1",
+        "org.apache.cordova.splashscreen": "1.0.0"
     }
 }

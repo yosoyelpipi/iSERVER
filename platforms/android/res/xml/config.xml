@@ -28,8 +28,20 @@
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <preference name="android-minSdkVersion" value="14" />
     <allow-intent href="market:*" />
+    <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
+    <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png" />
+    <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png" />
+    <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png" />
+    <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
+    <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
+    <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
+    <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
     <name>Chronos</name>
     <description>
         El primer reloj inteligente para el control de fichada de personal.
@@ -47,4 +59,6 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="4000" />
 </widget>

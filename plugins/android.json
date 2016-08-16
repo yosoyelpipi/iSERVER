@@ -30,6 +30,9 @@
         },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "com.itris.chronos"
+        },
+        "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "com.itris.chronos"
         }
     },
     "dependent_plugins": {

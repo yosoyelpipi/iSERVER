@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.itris.chronos" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Chronos</name>
+    <description>
+        El primer reloj inteligente para el control de fichada de personal.
+    </description>
+    <author email="soportecliente@itris.com.ar" href="http://chronos.itris.com.ar">
+        Leo Condori
+    </author>
+    <content src="index.html" />
+    <preference name="phonegap-version" value="cli-6.3.0" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <preference name="android-minSdkVersion" value="14" />
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="BackupWebStorage" value="none" />
+    </platform>
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="4000" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <plugin name="cordova-plugin-console" spec="~1.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />
+    <plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />
+    <plugin name="cordova-plugin-geolocation" spec="1.0.1" source="pgb" />
+    <plugin name="cordova-plugin-media" spec="1.0.1" source="pgb" />
+    <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
+    
+
+
+<platform name="android">
+    <!-- you can use any density that exists in the Android project -->
+    <splash src="res/screen/android/splash-land-hdpi.png" density="land-hdpi"/>
+    <splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
+    <splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
+    <splash src="res/screen/android/splash-land-xhdpi.png" density="land-xhdpi"/>
+
+    <splash src="res/screen/android/splash-port-hdpi.png" density="port-hdpi"/>
+    <splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi"/>
+    <splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi"/>
+    <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi"/>
+</platform>    
+
+    <engine name="android" spec="~5.1.1" />
+</widget>
