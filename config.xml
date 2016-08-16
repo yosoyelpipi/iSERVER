@@ -8,7 +8,7 @@
 		<name>Chronos</name>
 		<description>El primer reloj inteligente para el control de fichada de personal.</description>
 		<author href="http://chronos.itris.com.ar" email="soportecliente@itris.com.ar">Leo Condori</author>
-		<preference name="phonegap-version" value="cli-6.3.0" />
+		
 		<feature name="http://api.phonegap.com/1.0/battery"/>
 		<feature name="http://api.phonegap.com/1.0/camera"/>
 		<feature name="http://api.phonegap.com/1.0/contacts"/>
@@ -25,7 +25,7 @@
 <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
 <plugin name="cordova-plugin-statusbar" source="npm" spec="~1.0.1"/>
 
-<preference name="phonegap-version" value="cli-6.0.0" />
+<preference name="phonegap-version" value="cli-6.3.0" />
 <preference name="android-build-tool" value="ant" />
 <preference name="orientation" value="default" />
 <preference name="fullscreen" value="true" />
