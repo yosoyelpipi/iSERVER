@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <icon src="img/app/192x192.png" />
-    <gap:splash src="img/app/1280x1920.png" />
+    <splash src="img/app/1280x1920.png" />
     <preference name="phonegap-version" value="cli-6.3.0" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
