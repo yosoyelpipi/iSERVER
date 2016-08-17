@@ -8,7 +8,7 @@
         Leo Condori
     </author>
     <content src="index.html" />
-    <icon src="www/img/app/192x192.png" />
+    <icon src="/android_asset/www/img/app/192x192.png" />
     <preference name="phonegap-version" value="cli-6.3.0" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
