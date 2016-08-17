@@ -40,18 +40,26 @@
     
 
 
-<platform name="android">
-    <!-- you can use any density that exists in the Android project -->
-    <splash src="res/screen/android/splash-land-hdpi.png" density="land-hdpi"/>
-    <splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
-    <splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
-    <splash src="res/screen/android/splash-land-xhdpi.png" density="land-xhdpi"/>
-
-    <splash src="res/screen/android/splash-port-hdpi.png" density="port-hdpi"/>
-    <splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi"/>
-    <splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi"/>
-    <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi"/>
-</platform>    
+	<platform name="android">
+		<icon src="img/app/36x36.png" qualifier="ldpi" />
+		<icon src="img/app/48x48.png" qualifier="mdpi" />
+		<icon src="img/app/72x72.png" qualifier="hdpi" />
+		<icon src="img/app/96x96.png" qualifier="xhdpi" />
+		<icon src="img/app/144x144.png" qualifier="xxhdpi" />
+		<icon src="img/app/192x192.png" qualifier="xxxhdpi" />
+		<splash src="img/app/200x320.png" qualifier="" />
+		<splash src="img/app/320x200.png" qualifier="" />
+		<splash src="img/app/320x480.png" qualifier="" />
+		<splash src="img/app/480x320.png" qualifier="" />
+		<splash src="img/app/480x800.png" qualifier="" />
+		<splash src="img/app/800x480.png" qualifier="" />
+		<splash src="img/app/720x1280.png" qualifier="" />
+		<splash src="img/app/1280x720.png" qualifier="" />
+		<splash src="img/app/960x1600.png" qualifier="" />
+		<splash src="img/app/1600x960.png" qualifier="" />
+		<splash src="img/app/1280x1920.png" qualifier="" />
+		<splash src="img/app/1920x1280.png" qualifier="" />
+	</platform>   
 
     <engine name="android" spec="~5.1.1" />
 </widget>
