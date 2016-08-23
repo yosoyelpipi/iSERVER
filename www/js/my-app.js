@@ -1,4 +1,5 @@
 // Initialize app
+
 var myApp = new Framework7();
 
 
@@ -14,6 +15,15 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB95-V7GuslG5hxXfikz27Dpru2qAJAcKQ",
+        authDomain: "apptest-14054.firebaseapp.com",
+        databaseURL: "https://apptest-14054.firebaseio.com",
+        storageBucket: "apptest-14054.appspot.com",
+    };
+    firebase.initializeApp(config);
+    
     window.addEventListener("batterystatus", onBatteryStatus, false);
     document.addEventListener("online", onLine, false);
     document.addEventListener("offline", onOffline, false);
@@ -36,6 +46,25 @@ addEstado(1);
 leeDatos();
 });
 
+
+function callRadar() {
+    try {
+      var tags = document.getElementById('epcs').value.split("\n");
+      rfidscanner.radar(winScan, failScan, tags);
+    } catch(err) {
+      alert("Error: " + err);
+    }
+}
+
+var winRadar = function (result) {
+                  if (result.cancelled) {
+                      alert("Leitura Cancelada.");
+                  }
+              };
+
+var failRadar = function (error) {
+                   alert("Scanning failed: " + error);
+               };
 
 
 // Play audio
@@ -588,4 +617,18 @@ function addEstado(analizar){
                 $('#iconos').html('(IN)');
             }
         }
+}
+
+function noy(){
+  var Leoemail= "lcondori@hotmail.com";
+  var Leopassword="1Laconchadetumadre";
+
+  firebase.auth().createUserWithEmailAndPassword(Leoemail, Leopassword).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(error.code);
+    alert(error.message);
+    // ...
+    });
 }

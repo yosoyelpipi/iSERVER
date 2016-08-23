@@ -39,8 +39,8 @@
     <plugin name="cordova-plugin-geolocation" spec="1.0.1" source="pgb" />
     <plugin name="cordova-plugin-media" spec="1.0.1" source="pgb" />
     <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
-    
-
+    <plugin name="cordova-plugin-firebase" spec="0.1.9" />
+    <plugin name="com.eficid.cordova.plugin.rfidscanner" spec="0.1.0" source="pgb" />
 
 	<platform name="android">
 		<icon src="img/app/36x36.png" qualifier="ldpi" />

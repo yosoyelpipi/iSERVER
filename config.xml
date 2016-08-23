@@ -13,7 +13,6 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -33,34 +32,31 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
-    <plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />
-    <plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />
-    <plugin name="cordova-plugin-geolocation" spec="1.0.1" source="pgb" />
-    <plugin name="cordova-plugin-media" spec="1.0.1" source="pgb" />
-    <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
-    
-
-
-	<platform name="android">
-		<icon src="img/app/36x36.png" qualifier="ldpi" />
-		<icon src="img/app/48x48.png" qualifier="mdpi" />
-		<icon src="img/app/72x72.png" qualifier="hdpi" />
-		<icon src="img/app/96x96.png" qualifier="xhdpi" />
-		<icon src="img/app/144x144.png" qualifier="xxhdpi" />
-		<icon src="img/app/192x192.png" qualifier="xxxhdpi" />
-		<splash src="img/app/200x320.png" qualifier="" />
-		<splash src="img/app/320x200.png" qualifier="" />
-		<splash src="img/app/320x480.png" qualifier="" />
-		<splash src="img/app/480x320.png" qualifier="" />
-		<splash src="img/app/480x800.png" qualifier="" />
-		<splash src="img/app/800x480.png" qualifier="" />
-		<splash src="img/app/720x1280.png" qualifier="" />
-		<splash src="img/app/1280x720.png" qualifier="" />
-		<splash src="img/app/960x1600.png" qualifier="" />
-		<splash src="img/app/1600x960.png" qualifier="" />
-		<splash src="img/app/1280x1920.png" qualifier="" />
-		<splash src="img/app/1920x1280.png" qualifier="" />
-	</platform>   
-
+    <plugin name="cordova-plugin-battery-status" source="pgb" spec="1.1.0" />
+    <plugin name="cordova-plugin-device" source="pgb" spec="1.0.1" />
+    <plugin name="cordova-plugin-geolocation" source="pgb" spec="1.0.1" />
+    <plugin name="cordova-plugin-media" source="pgb" spec="1.0.1" />
+    <plugin name="org.apache.cordova.splashscreen" source="pgb" spec="1.0.0" />
+    <platform name="android">
+        <icon qualifier="ldpi" src="img/app/36x36.png" />
+        <icon qualifier="mdpi" src="img/app/48x48.png" />
+        <icon qualifier="hdpi" src="img/app/72x72.png" />
+        <icon qualifier="xhdpi" src="img/app/96x96.png" />
+        <icon qualifier="xxhdpi" src="img/app/144x144.png" />
+        <icon qualifier="xxxhdpi" src="img/app/192x192.png" />
+        <splash qualifier="" src="img/app/200x320.png" />
+        <splash qualifier="" src="img/app/320x200.png" />
+        <splash qualifier="" src="img/app/320x480.png" />
+        <splash qualifier="" src="img/app/480x320.png" />
+        <splash qualifier="" src="img/app/480x800.png" />
+        <splash qualifier="" src="img/app/800x480.png" />
+        <splash qualifier="" src="img/app/720x1280.png" />
+        <splash qualifier="" src="img/app/1280x720.png" />
+        <splash qualifier="" src="img/app/960x1600.png" />
+        <splash qualifier="" src="img/app/1600x960.png" />
+        <splash qualifier="" src="img/app/1280x1920.png" />
+        <splash qualifier="" src="img/app/1920x1280.png" />
+    </platform>
     <engine name="android" spec="~5.1.1" />
+    <plugin name="com.eficid.cordova.plugin.rfidscanner" spec="https://github.com/eficid/RFIDScannerPlugin" />
 </widget>
