@@ -28,14 +28,14 @@
         "org.apache.cordova.battery-status": {
             "PACKAGE_NAME": "com.itris.chronos"
         },
-        "com.eficid.cordova.plugin.rfidscanner": {
-            "PACKAGE_NAME": "com.itris.chronos"
-        },
-        "cordova-plugin-firebase": {
+        "phonegap-nfc": {
             "PACKAGE_NAME": "com.itris.chronos"
         }
     },
     "dependent_plugins": {
+        "com.eficid.cordova.plugin.rfidscanner": {
+            "PACKAGE_NAME": "com.itris.chronos"
+        },
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.itris.chronos"
         },
