@@ -14,7 +14,7 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
-    
+    nfc.addNdefListener(onNfc, successi, failure);
     window.addEventListener("batterystatus", onBatteryStatus, false);
     document.addEventListener("online", onLine, false);
     document.addEventListener("offline", onOffline, false);
@@ -37,25 +37,18 @@ addEstado(1);
 leeDatos();
 });
 
-
-function callRadar() {
-    try {
-      var tags = document.getElementById('epcs').value.split("\n");
-      rfidscanner.radar(winScan, failScan, tags);
-    } catch(err) {
-      alert("Error: " + err);
-    }
+function onNfc(nfcEvent) {
+    // display the tag as JSON
+    alert(JSON.stringify(nfcEvent.tag));
 }
 
-var winRadar = function (result) {
-                  if (result.cancelled) {
-                      alert("Leitura Cancelada.");
-                  }
-              };
+function successi(result) {
+    alert("Listening for NFC Messages");
 
-var failRadar = function (error) {
-                   alert("Scanning failed: " + error);
-               };
+}
+function failure(reason) {
+    alert("Failed to add NDEF listener");
+}
 
 
 // Play audio
