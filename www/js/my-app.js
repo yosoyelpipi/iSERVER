@@ -2,7 +2,6 @@
 
 var myApp = new Framework7();
 
-
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
@@ -15,14 +14,6 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyB95-V7GuslG5hxXfikz27Dpru2qAJAcKQ",
-        authDomain: "apptest-14054.firebaseapp.com",
-        databaseURL: "https://apptest-14054.firebaseio.com",
-        storageBucket: "apptest-14054.appspot.com",
-    };
-    firebase.initializeApp(config);
     
     window.addEventListener("batterystatus", onBatteryStatus, false);
     document.addEventListener("online", onLine, false);
@@ -617,18 +608,4 @@ function addEstado(analizar){
                 $('#iconos').html('(IN)');
             }
         }
-}
-
-function noy(){
-  var Leoemail= "lcondori@hotmail.com";
-  var Leopassword="1Laconchadetumadre";
-
-  firebase.auth().createUserWithEmailAndPassword(Leoemail, Leopassword).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    alert(error.code);
-    alert(error.message);
-    // ...
-    });
 }

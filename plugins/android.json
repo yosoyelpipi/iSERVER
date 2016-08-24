@@ -30,6 +30,9 @@
         },
         "com.eficid.cordova.plugin.rfidscanner": {
             "PACKAGE_NAME": "com.itris.chronos"
+        },
+        "cordova-plugin-firebase": {
+            "PACKAGE_NAME": "com.itris.chronos"
         }
     },
     "dependent_plugins": {
