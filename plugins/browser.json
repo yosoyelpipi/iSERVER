@@ -13,6 +13,9 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.itris.chronos"
         },
+        "cordova-plugin-firebase": {
+            "PACKAGE_NAME": "com.itris.chronos"
+        },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.itris.chronos"
         },
@@ -28,11 +31,14 @@
         "org.apache.cordova.battery-status": {
             "PACKAGE_NAME": "com.itris.chronos"
         },
-        "com.eficid.cordova.plugin.rfidscanner": {
+        "phonegap-nfc": {
             "PACKAGE_NAME": "com.itris.chronos"
         }
     },
     "dependent_plugins": {
+        "com.eficid.cordova.plugin.rfidscanner": {
+            "PACKAGE_NAME": "com.itris.chronos"
+        },
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.itris.chronos"
         },

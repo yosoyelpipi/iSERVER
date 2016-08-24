@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.itris.chronos" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Device">
+        <param name="browser-package" value="Device" />
+    </feature>
+    <name>Chronos</name>
+    <description>
+        El primer reloj inteligente para el control de fichada de personal.
+    </description>
+    <author email="soportecliente@itris.com.ar" href="http://chronos.itris.com.ar">
+        Leo Condori
+    </author>
+    <content src="index.html" />
+    <icon src="img/app/192x192.png" />
+    <splash src="img/app/1280x1920.png" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <gap:plugin name="phonegap-nfc" source="npm" />
+    <preference name="phonegap-version" value="cli-6.3.0" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="4000" />
+</widget>
